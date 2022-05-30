@@ -1,0 +1,4 @@
+docker: docker-compose up
+web: bin/rails server -p 3000
+css: bin/rails tailwindcss:watch
+# worker: bundle exec sidekiq -q default -q mailers
