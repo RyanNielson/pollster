@@ -1,5 +1,6 @@
 class PollsController < ApplicationController
   before_action :set_poll, only: %i[show edit update destroy]
+  before_action :set_voted, only: %i[show]
 
   # GET /polls
   def index
@@ -12,6 +13,7 @@ class PollsController < ApplicationController
   # GET /polls/new
   def new
     @poll = Poll.new
+    @poll.choices.build
     @poll.choices.build
   end
 
@@ -46,15 +48,16 @@ class PollsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_poll
-    @poll = Poll.find(params[:id])
+    @poll = Poll.find_by!(slug: params[:slug])
+  end
+
+  def set_voted
+    @voted = cookies.permanent["voted-#{@poll.slug}"].present?
   end
 
   # Only allow a list of trusted parameters through.
   def poll_params
-    p 'RYAN PARAMS'
-    p params
-    params.require(:poll).permit(:slug, :text, choices_attributes: [:text])
+    params.require(:poll).permit(:text, choices_attributes: [:text])
   end
 end

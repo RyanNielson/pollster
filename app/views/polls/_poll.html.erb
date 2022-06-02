@@ -1,17 +1,28 @@
-<div id="<%= dom_id poll %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Slug:</strong>
-    <%= poll.slug %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Text:</strong>
+<div id="<%= dom_id poll %>" class="bg-white w-full rounded-md border-4 border-black p-6">
+  <h1 class="my-5 text-3xl text-center">
     <%= poll.text %>
-  </p>
+  </h1>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this poll", poll, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this poll', edit_poll_path(poll), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  <div class="my-5 flex flex-col gap-3">
+    <ul>
+    <% poll.choices.each do |choice| %>
+      <% if voted.present? && voted %>
+        <%# TODO: Instead of progress we might want to just use a div or span and scale the width. %>
+        <li class="py-4">
+          <div class="w-full bg-gray-200 dark:bg-gray-700 text-white text-base font-bold rounded">
+            <div class="dark:bg-gray-200 bg-gray-700 text-xs font-medium text-blue-100 p-0.5 leading-none rounded flex justify-between" style="width: <%= choice_percentage(choice) %>">
+              <span class="text-red-500"><%= choice.text %></span>
+              <span class="text-red-500"><%= choice_percentage(choice) %></span>
+            </div>
+          </div>
+        </li>
+      <% else %>
+        <li class="py-4 ">
+          <%# <%= button_to choice.text, poll_choice_votes_path(poll, choice), class: "w-full bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 rounded" %>
+          <%= button_to choice.text, poll_choice_votes_path(poll, choice), class: "text-lg active:translate-x-2 active:translate-y-2 active:shadow-none text-lg w-full rounded-md border-4 border-black shadow-opaque bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 " %>
+        </li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
 </div>
