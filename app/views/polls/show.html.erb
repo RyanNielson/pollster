@@ -1,16 +1,20 @@
-<div class="mx-auto w-full flex max-w-xl">
+<!--<div class="mx-auto md:w-2/3 w-full flex max-w-xl">-->
+<%# <div> %>
+
+<% if @voted %>
+  <%= turbo_stream_from @poll %>
+<% end %>
+
+<%= turbo_frame_tag @poll do %>
   <div class="mx-auto w-full">
-    <% if notice.present? %>
+    <!--<% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
     <% if alert.present? %>
       <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="notice"><%= alert %></p>
     <% end %>
-
-    <% if @voted %>
-      <%= turbo_stream_from @poll %>
-    <% end %>
+    -->
 
     <%= render @poll, voted: @voted %>
 
@@ -20,4 +24,5 @@
     <%# </div> %>
     <%#= link_to 'Back to polls', polls_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
-</div>
+<%# </div> %>
+<% end %>

@@ -1,4 +1,5 @@
-<div id="<%= dom_id poll %>" class="bg-white w-full rounded-md border-4 border-black p-6">
+<!--<div id="<%= dom_id poll %>" class="bg-white w-full rounded-md border-4 border-black p-6">-->
+<div id="<%= dom_id poll %>">
   <h1 class="my-5 text-3xl text-center">
     <%= poll.text %>
   </h1>
@@ -9,17 +10,27 @@
       <% if voted.present? && voted %>
         <%# TODO: Instead of progress we might want to just use a div or span and scale the width. %>
         <li class="py-4">
-          <div class="w-full bg-gray-200 dark:bg-gray-700 text-white text-base font-bold rounded">
+          <!--<div class="w-full bg-gray-200 dark:bg-gray-700 text-white text-base font-bold rounded">
             <div class="dark:bg-gray-200 bg-gray-700 text-xs font-medium text-blue-100 p-0.5 leading-none rounded flex justify-between" style="width: <%= choice_percentage(choice) %>">
               <span class="text-red-500"><%= choice.text %></span>
               <span class="text-red-500"><%= choice_percentage(choice) %></span>
             </div>
+          </div>-->
+          <div class="w-full bg-gray-700 text-white text-base font-bold rounded-md border-4 border-black">
+            <div class="flex relative justify-between">
+              <div class="transition-all bg-blue-500 font-medium p-0.5 leading-none rounded-md py-2 px-4 gap-3 absolute top-0 left-0 bottom-0" style="width: <%= choice_percentage(choice) %>"></div>
+              <div class="text-white text-base py-2 px-4 z-10"><%= choice.text %></div>
+              <div class="text-white text-base py-2 px-4 z-10"><%= choice_percentage(choice) %></div>
+            </div>
           </div>
+
+          <%# text-lg w-full rounded-md border-4 border-black shadow-opaque-2 bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 %>
         </li>
       <% else %>
         <li class="py-4 ">
           <%# <%= button_to choice.text, poll_choice_votes_path(poll, choice), class: "w-full bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 rounded" %>
-          <%= button_to choice.text, poll_choice_votes_path(poll, choice), class: "text-lg active:translate-x-2 active:translate-y-2 active:shadow-none text-lg w-full rounded-md border-4 border-black shadow-opaque bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 " %>
+          <%# <%= button_to choice.text, poll_choice_votes_path(poll, choice), class: "transition-all text-lg active:translate-x-2 active:translate-y-2 active:shadow-none text-lg w-full rounded-md border-4 border-black shadow-opaque bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 " %>
+          <%= button_to choice.text, poll_choice_votes_path(poll, choice), class: "transition-all text-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-opaque-1 active:translate-x-2 active:translate-y-2 active:shadow-none text-lg w-full rounded-md border-4 border-black shadow-opaque-2 bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 " %>
         </li>
       <% end %>
     <% end %>

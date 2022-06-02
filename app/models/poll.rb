@@ -1,7 +1,7 @@
 class Poll < ApplicationRecord
   include Sluggable
 
-  has_many :choices
+  has_many :choices, -> { order(created_at: :asc) }
 
   validates :slug, presence: true, uniqueness: { case_sensitive: false }
   validates :text, presence: true

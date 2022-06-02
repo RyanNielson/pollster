@@ -12,7 +12,8 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {
-        'opaque': '0.5rem 0.5rem 0 0 rgb(0 0 0 / 1)',
+        'opaque-1': '0.375rem 0.375rem 0 0 rgb(0 0 0 / 1)',
+        'opaque-2': '0.5rem 0.5rem 0 0 rgb(0 0 0 / 1)',
       }
     },
   },
