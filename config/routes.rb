@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :polls, param: :slug, only: %i[show new create] do
-    resources :choices do
+    resources :choices, only: [] do
       resources :votes, only: :create
     end
   end
