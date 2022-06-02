@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A work-in-progress simple anonymous polling application built with Ruby on Rails and Hotwire
 
-Things you may want to cover:
+## Running locally
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Install Ruby 3.1.2 manually or run `asdf install` in the project directory if you use `asdf` as a language version manager.
+2. Install [Overmind](https://github.com/DarthSim/overmind#installation)
+3. Run `bin/dev` to start Postgres and Redis via Docker Compose, along with the Rails app itself.
+4. Open another terminal window and run `bin/rails db:migrate` to set up the database and run migrations.
+5. In your browser visit http://localhost:3000 to use the app.
