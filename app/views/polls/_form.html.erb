@@ -13,7 +13,8 @@
 
   <div class="my-5">
     <%= form.label :text, "Ask a question" %>
-    <%= form.text_field :text, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%#= form.text_field :text, class: "rounded-md border-2 border-black block outline-none px-3 py-2 mt-2 w-full" %>
+    <%= render TextFieldComponent.new(form: form, method: :text) %>
   </div>
 
   <div class="my-5" data-controller="nested-form">
@@ -37,6 +38,8 @@
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= render ButtonComponent.new(type: :submit) do %>
+      Create a poll
+    <% end %>
   </div>
 <% end %>

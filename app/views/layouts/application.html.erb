@@ -16,8 +16,9 @@
     <header class="flex bg-white border-b-4 border-black ">
       <div class="container mx-auto p-6 w-full lg:max-w-screen-lg flex justify-between items-center">
         <h1 class="text-3xl font-bold">Pollster</h1>
-        <%# <%= link_to "Create Poll", root_path, class: "transition-all text-lg active:translate-x-2 active:translate-y-2 active:shadow-none text-lg rounded-md border-4 border-black shadow-opaque bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 " %>
-        <%= link_to "Create Poll", root_path, class: "transition-all text-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-opaque-1 active:translate-x-2 active:translate-y-2 active:shadow-none text-lg rounded-md border-4 border-black shadow-opaque-2 bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 " %>
+        <%= render ButtonComponent.new(href: root_path) do %>
+          Create Poll
+        <% end %>
       </div>
     </header>
     <main class="container mx-auto mt-4 px-5 flex lg:max-w-screen-lg">

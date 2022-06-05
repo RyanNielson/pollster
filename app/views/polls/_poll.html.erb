@@ -28,9 +28,9 @@
         </li>
       <% else %>
         <li class="py-4 ">
-          <%# <%= button_to choice.text, poll_choice_votes_path(poll, choice), class: "w-full bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 rounded" %>
-          <%# <%= button_to choice.text, poll_choice_votes_path(poll, choice), class: "transition-all text-lg active:translate-x-2 active:translate-y-2 active:shadow-none text-lg w-full rounded-md border-4 border-black shadow-opaque bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 " %>
-          <%= button_to choice.text, poll_choice_votes_path(poll, choice), class: "transition-all text-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-opaque-1 active:translate-x-2 active:translate-y-2 active:shadow-none text-lg w-full rounded-md border-4 border-black shadow-opaque-2 bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 " %>
+          <%= render ButtonComponent.new(href: poll_choice_votes_path(poll, choice), type: :button, full: true) do %>
+            <%= choice.text %>
+          <% end %>
         </li>
       <% end %>
     <% end %>

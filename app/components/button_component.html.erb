@@ -1,0 +1,15 @@
+<% if @href %>
+  <% if @type == :button %>
+    <%= button_to @href, class: classes do %>
+      <%= content %>
+    <% end%>
+  <% else %>
+    <%= link_to @href, class: classes do %>
+      <%= content %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= button_tag type: @type, class: classes do %>
+    <%= content %>
+  <% end %>
+<% end %>
