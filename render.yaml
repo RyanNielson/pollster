@@ -1,5 +1,5 @@
 databases:
-  - name: pollster
+  - name: pollster-postgresql
     databaseName: pollster
     user: pollster
 
@@ -12,7 +12,33 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: pollster
+          name: pollster-postgresql
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: pollster-redis
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+
+  - type: redis
+    name: pollster-redis
+    region: ohio
+    maxmemoryPolicy: noeviction
+    ipAllowList: [] # only allow internal connections
+
+  - type: worker
+    name: pollster-worker
+    env: ruby
+    region: ohio
+    buildCommand: bundle install
+    startCommand: bundle exec sidekiq
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: pollster-redis
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false

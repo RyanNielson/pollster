@@ -77,3 +77,4 @@ group :test do
 end
 
 gem "view_component", "~> 2.56"
+gem "sidekiq", "~> 6.5"
