@@ -84,6 +84,7 @@ test:
 #
 production:
   <<: *default
-  database: pollster_production
-  username: pollster
-  password: <%= ENV["POLLSTER_DATABASE_PASSWORD"] %>
+  # database: pollster_production
+  # username: pollster
+  # password: <%= ENV["POLLSTER_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
