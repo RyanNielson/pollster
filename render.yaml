@@ -2,6 +2,7 @@ databases:
   - name: pollster-postgresql
     databaseName: pollster
     user: pollster
+    region: ohio
 
 services:
   - type: web
