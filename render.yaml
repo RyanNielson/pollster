@@ -7,7 +7,7 @@ services:
   - type: web
     name: pollster
     env: ruby
-    region: oregon
+    region: ohio
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
@@ -25,14 +25,14 @@ services:
 
   - type: redis
     name: pollster-redis
-    region: oregon
+    region: ohio
     maxmemoryPolicy: noeviction
     ipAllowList: [] # only allow internal connections
 
   - type: worker
     name: pollster-worker
     env: ruby
-    region: oregon
+    region: ohio
     buildCommand: bundle install
     startCommand: bundle exec sidekiq
     envVars:
