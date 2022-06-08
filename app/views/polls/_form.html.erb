@@ -12,34 +12,35 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :text, "Ask a question" %>
-    <%#= form.text_field :text, class: "rounded-md border-2 border-black block outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :text, "Title", class: "text-xl font-bold" %>
     <%= render TextFieldComponent.new(form: form, method: :text) %>
   </div>
 
-  <div class="my-5" data-controller="nested-form">
-    <template data-nested-form-target="template">
-      <%= form.fields_for :choices, Choice.new, child_index: 'NEW_RECORD' do |choice_form| %>
+  <div class="my-5">
+    <%= form.label :choices, "Choices", class: "text-xl font-bold" %>
+    <div class="flex flex-col gap-y-5" data-controller="nested-form">
+      <template data-nested-form-target="template">
+        <%= form.fields_for :choices, Choice.new, child_index: 'NEW_RECORD' do |choice_form| %>
+          <%= render "choice_fields", form: choice_form %>
+        <% end %>
+      </template>
+
+      <%= form.fields_for :choices do |choice_form| %>
         <%= render "choice_fields", form: choice_form %>
       <% end %>
-    </template>
 
-    <%= form.fields_for :choices do |choice_form| %>
-      <%= render "choice_fields", form: choice_form %>
-    <% end %>
-
-    <div class="mb-3" data-nested-form-target="add">
-      <%= form.button "Add Choice", type: "button", data: { action: "click->nested-form#addAssociation" } %>
-
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-      </svg>
+      <div data-nested-form-target="add" class="flex justify-between">
+        <%= render ButtonComponent.new(type: :button, data: { action: "click->nested-form#addAssociation" }) do |c| %>
+          <% c.with_leading do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+            </svg>
+          <% end %>
+          Add Choice
+        <% end %>
+      <%= render ButtonComponent.new(type: :submit) do %>
+        Publish Poll
+      <% end %>
     </div>
-  </div>
-
-  <div class="inline">
-    <%= render ButtonComponent.new(type: :submit) do %>
-      Create a poll
-    <% end %>
   </div>
 <% end %>
