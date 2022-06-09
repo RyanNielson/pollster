@@ -3,6 +3,7 @@ databases:
     databaseName: pollster
     user: pollster
     region: ohio
+    plan: free
 
 services:
   - type: web
@@ -23,12 +24,14 @@ services:
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
+    plan: free
 
   - type: redis
     name: pollster-redis
     region: ohio
     maxmemoryPolicy: noeviction
     ipAllowList: [] # only allow internal connections
+    plan: free
 
   - type: worker
     name: pollster-worker
