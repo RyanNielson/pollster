@@ -1,0 +1,10 @@
+<% p 'RYAN WEE' %>
+<% p @poll%>
+<%= turbo_stream_from @poll %>
+
+<%= turbo_frame_tag @poll, 'results' do %>
+  <div class="mx-auto w-full">
+    <%= render partial: 'result', locals: { poll: @poll } %>
+  </div>
+<%# </div> %>
+<% end %>

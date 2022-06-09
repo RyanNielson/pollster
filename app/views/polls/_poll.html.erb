@@ -1,4 +1,3 @@
-<!--<div id="<%= dom_id poll %>" class="bg-white w-full rounded-md border-4 border-black p-6">-->
 <div id="<%= dom_id poll %>">
   <h1 class="my-5 text-3xl text-center">
     <%= poll.text %>
@@ -7,23 +6,11 @@
   <div class="my-5 flex flex-col gap-3">
     <ul>
     <% poll.choices.each do |choice| %>
-      <% if voted.present? && voted %>
-        <li class="py-4">
-          <div class="w-full bg-gray-700 text-white text-base font-bold rounded-md border-4 border-black">
-            <div class="flex relative justify-between">
-              <div class="transition-all bg-blue-500 font-medium p-0.5 leading-none rounded-md py-2 px-4 gap-3 absolute top-0 left-0 bottom-0" style="width: <%= choice_percentage(choice) %>"></div>
-              <div class="text-white text-base py-2 px-4 z-10"><%= choice.text %></div>
-              <div class="text-white text-base py-2 px-4 z-10"><%= choice_percentage(choice) %></div>
-            </div>
-          </div>
-        </li>
-      <% else %>
-        <li class="py-4 ">
-          <%= render ButtonComponent.new(href: poll_choice_votes_path(poll, choice), type: :button, full: true) do %>
-            <%= choice.text %>
-          <% end %>
-        </li>
-      <% end %>
+      <li class="py-4 ">
+        <%= render ButtonComponent.new(href: poll_choice_votes_path(poll, choice), type: :button, full: true) do %>
+          <%= choice.text %>
+        <% end %>
+      </li>
     <% end %>
     </ul>
   </div>

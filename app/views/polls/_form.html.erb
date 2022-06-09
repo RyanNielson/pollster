@@ -29,7 +29,7 @@
         <%= render "choice_fields", form: choice_form %>
       <% end %>
 
-      <div data-nested-form-target="add" class="flex justify-between">
+      <div data-nested-form-target="add" class="flex justify-between flex-col sm:flex-row gap-4">
         <%= render ButtonComponent.new(type: :button, data: { action: "click->nested-form#addAssociation" }) do |c| %>
           <% c.with_leading do %>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 20 20" fill="currentColor">

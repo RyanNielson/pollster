@@ -7,7 +7,7 @@ class Vote < ApplicationRecord
 
   def broadcast_later
     # TODO: Can this be done without having to define my own method?
-    broadcast_replace_later_to choice.poll, partial: 'polls/poll', locals: { poll: choice.poll, voted: true },
+    broadcast_replace_later_to choice.poll, partial: 'results/result', locals: { poll: choice.poll },
                                             target: choice.poll
   end
 end

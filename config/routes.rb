@@ -3,10 +3,8 @@ Rails.application.routes.draw do
     resources :choices, only: [] do
       resources :votes, only: :create
     end
+    resources :results, only: :index
   end
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
   root 'polls#new'
 end
