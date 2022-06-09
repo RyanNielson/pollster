@@ -7,10 +7,10 @@
     <ul>
     <% poll.choices.each do |choice| %>
       <li class="py-4">
-        <div class="w-full bg-gray-700 text-white text-base font-bold rounded-md border-4 border-black">
+        <div class="w-full bg-gray-700 text-white text-base font-bold rounded-md border-4 border-black overflow-hidden whitespace-nowrap">
         <div class="flex relative justify-between">
-          <div class="transition-all bg-blue-500 font-medium leading-none rounded-md px-1 py-2 gap-3 absolute top-0 left-0 bottom-0" style="width: <%= choice_percentage(choice) %>"></div>
-          <div class="text-white text-base py-2 px-4 z-10"><%= choice.text %></div>
+          <div class="transition-all bg-blue-500 font-medium leading-none px-1 py-2 gap-3 absolute top-0 left-0 bottom-0" style="width: <%= choice_percentage(choice) %>"></div>
+          <div class="text-white text-base py-2 px-4 z-10 overflow-hidden text-ellipsis"><%= choice.text %></div>
           <div class="text-white text-base py-2 px-4 z-10"><%= choice_percentage(choice) %> (<%= choice.votes_count %>)</div>
         </div>
         </div>
