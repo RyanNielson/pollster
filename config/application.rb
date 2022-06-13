@@ -29,10 +29,10 @@ module Pollster
 
     # Rails.application.config.assets.paths << 'app/components'
 
-    initializer 'app_assets', after: 'importmap.assets' do
-      Rails.application.config.assets.paths << Rails.root.join('app') # for component sidecar js
-    end
+    # initializer 'app_assets', after: 'importmap.assets' do
+    #   Rails.application.config.assets.paths << Rails.root.join('app') # for component sidecar js
+    # end
 
-    config.importmap.cache_sweepers << Rails.root.join('app/components')
+    # config.importmap.cache_sweepers << Rails.root.join('app/components')
   end
 end
