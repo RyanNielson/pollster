@@ -10,4 +10,4 @@ eagerLoadControllersFrom("controllers", application)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
 
-eagerLoadControllersFrom("components", application)
+// eagerLoadControllersFrom("components", application)

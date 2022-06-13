@@ -17,5 +17,5 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.paths << 'app/components'
 # config.importmap.cache_sweepers << Rails.root.join('app/components')
 
-Rails.application.config.assets.paths << 'app/components'
-Rails.application.config.assets.debug = true
+# Rails.application.config.assets.paths << 'app/components'
+# Rails.application.config.assets.debug = true
