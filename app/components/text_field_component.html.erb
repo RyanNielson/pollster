@@ -1,1 +1,5 @@
-<%= @form.text_field @method, class: "rounded-md border-2 border-black block outline-none px-3 py-2 w-full" %>
+<% if @form %>
+  <%= @form.text_field @method, class: "rounded-md border-2 border-black block outline-none px-3 py-2 w-full" %>
+<% else %>
+  <%= text_field_tag @name, @value, class: "rounded-md border-2 border-black block outline-none px-3 py-2 w-full" %>
+<% end %>

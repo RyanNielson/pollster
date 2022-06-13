@@ -10,6 +10,6 @@ module Sluggable
   def generate_slug
     return unless slug.nil?
 
-    self.slug = "#{Faker::Adjective.positive}-#{Faker::Creature::Animal.name}-#{Faker::Number.number(digits: 4)}".downcase
+    self.slug = "#{Faker::Adjective.positive}-#{Faker::Creature::Animal.name}-#{Faker::Number.number(digits: 4)}".parameterize
   end
 end

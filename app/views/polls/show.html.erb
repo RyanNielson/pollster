@@ -2,4 +2,5 @@
 
 <div class="mx-auto w-full">
   <%= render @poll %>
+  <%= render CopyToClipboardComponent.new(value: poll_url(@poll)) %>
 </div>

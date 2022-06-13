@@ -1,0 +1,10 @@
+<div data-controller="copy-to-clipboard-component" class="flex w-full md:w-1/2 relative justify-end ml-auto">
+  <%= text_field_tag 'url', @value, data: { "copy-to-clipboard-component-target": "value" }, disabled: true, class: "rounded-md border-2 border-black block outline-none px-3 py-2 w-full disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none" %>
+  <%= button_tag type: :button, data: { action: "click->copy-to-clipboard-component#copy" }, class: 'absolute inset-y-0 right-0 right-1.5 bottom-1.5 top-1.5 transition-all text-xs   hover:translate-x-0.5 hover:translate-y-0.5 active:translate-x-1 active:translate-y-1 rounded-md border-4 border-black bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-2 overflow-hidden whitespace-nowrap text-ellipsis bg-blue-500 hover:bg-blue-700 inline-flex items-center grow' do %>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z" />
+      <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z" />
+    </svg>
+    <span data-copy-to-clipboard-component-target="text">Copy</span>
+  <% end %>
+</div>
